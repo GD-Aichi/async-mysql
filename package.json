@@ -1,0 +1,25 @@
+{
+    "name": "@gd/async-mysql",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/db.js",
+    "types": "dist/db.d.js",
+    "scripts": {
+        "test": "jest",
+        "build": "tsc"
+    },
+    "author": "Jens Kolberg",
+    "license": "ISC",
+    "dependencies": {
+        "mysql": "2.16.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^23.3.7",
+        "@types/mysql": "^2.15.5",
+        "eslint": "^5.7.0",
+        "jest": "^23.6.0",
+        "prettier": "^1.14.3",
+        "ts-jest": "^23.10.4",
+        "typescript": "^3.1.3"
+    }
+}
