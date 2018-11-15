@@ -25,6 +25,7 @@ exports.poolGetConnection = (pool) => {
         pool.getConnection((err, connection) => {
             if (err) {
                 fail(err);
+                return;
             }
             connection.config.queryFormat = (query, values) => {
                 if (!values)
@@ -45,6 +46,7 @@ exports.beginTransaction = (connection) => {
         connection.beginTransaction((err) => {
             if (err) {
                 fail(err);
+                return;
             }
             ok();
         });
@@ -62,6 +64,7 @@ exports.commit = (connection) => {
         connection.commit((err) => {
             if (err) {
                 fail(err);
+                return;
             }
             ok();
         });
@@ -72,6 +75,7 @@ exports.query = (connection, sql, values) => {
         connection.query(sql, values, (err, results, fields) => {
             if (err) {
                 fail(err);
+                return;
             }
             ok({ results, fields });
         });

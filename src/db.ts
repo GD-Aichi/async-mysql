@@ -44,6 +44,7 @@ export const poolGetConnection = (pool: Pool): Promise<PoolConnection> => {
         pool.getConnection((err: any, connection: PoolConnection) => {
             if (err) {
                 fail(err);
+                return;
             }
             connection.config.queryFormat = (query, values) => {
                 if (!values) return query;
@@ -64,6 +65,7 @@ export const beginTransaction = (connection: PoolConnection) => {
         connection.beginTransaction((err: any) => {
             if (err) {
                 fail(err);
+                return;
             }
             ok();
         });
@@ -83,6 +85,7 @@ export const commit = (connection: PoolConnection) => {
         connection.commit((err: any) => {
             if (err) {
                 fail(err);
+                return;
             }
             ok();
         });
@@ -101,6 +104,7 @@ export const query = <T>(
             (err: any, results: Array<T>, fields: FieldInfo[]) => {
                 if (err) {
                     fail(err);
+                    return;
                 }
                 ok({ results, fields });
             }
