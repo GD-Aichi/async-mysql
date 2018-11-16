@@ -46,15 +46,17 @@ export const poolGetConnection = (pool: Pool): Promise<PoolConnection> => {
                 fail(err);
                 return;
             }
-            connection.config.queryFormat = (query, values) => {
-                if (!values) return query;
-                return query.replace(/\:(\w+)/g, (txt, key) => {
-                    if (values.hasOwnProperty(key)) {
-                        return connection.escape(values[key]);
-                    }
-                    return txt;
-                });
-            };
+            if (connection && connection.config) {
+                connection.config.queryFormat = (query, values) => {
+                    if (!values) return query;
+                    return query.replace(/\:(\w+)/g, (txt, key) => {
+                        if (values.hasOwnProperty(key)) {
+                            return connection.escape(values[key]);
+                        }
+                        return txt;
+                    });
+                };
+            }
             ok(connection);
         });
     });
