@@ -8,6 +8,9 @@
         "test": "jest",
         "build": "tsc"
     },
+    "files": [
+        "dist"
+    ],
     "author": "Jens Kolberg",
     "license": "ISC",
     "dependencies": {
